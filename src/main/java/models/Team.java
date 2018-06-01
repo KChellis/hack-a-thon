@@ -7,10 +7,12 @@ public class Team {
     private String name;
     private String description;
     private List<String> members = new ArrayList<>();
+    private static ArrayList<Team> instances = new ArrayList<>();
 
     public Team(String name, String description){
         this.name = name;
         this.description = description;
+        instances.add(this);
     }
 
     public String getName() {
@@ -23,5 +25,13 @@ public class Team {
 
     public List<String> getMembers() {
         return members;
+    }
+
+    public void addMember(String name){
+        members.add(name);
+    }
+
+    public static ArrayList<Team> getAll() {
+        return instances;
     }
 }
