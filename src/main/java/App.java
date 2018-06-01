@@ -16,10 +16,25 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView (model, "index.hbs");
         }, new HandlebarsTemplateEngine());
+
         get("/teams", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("teams", Team.getAll());
             return new ModelAndView(model, "teams.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/teams/add", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView (model, "addteam-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/teams/add", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = request.queryParams("name");
+            String description = request.queryParams("description");
+            Team newTeam = new Team (name, description);
+            model.put("teams", Team.getAll());
+            return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
     }
