@@ -82,14 +82,26 @@ public class TeamTest {
 
         testTeam.updateTeamName("Epicodus alums");
 
-        assertEquals(formerName, testTeam.getName());
+        assertEquals(formerMembers, testTeam.getMembers());
         assertEquals(formerDescription, testTeam.getDescription());
-        assertNotEquals(formerMembers, testTeam.getMembers());
+        assertNotEquals(formerName, testTeam.getName());
     }
 
     @Test
     public void getId_teamsInstantiateWithAnID_1() throws Exception{
         Team testTeam = new Team("Epicodus", "A group of Java Students");
         assertEquals(1, testTeam.getId());
+    }
+
+    @Test
+    public void getById_returnsCorrectTeam_true() {
+        Team testTeam = new Team("Epicodus", "A group of Java Students");
+        assertEquals(1, Team.findById(testTeam.getId()).getId());
+    }
+    @Test
+    public void getById_returnsCorrectTeamWhenMoreThanOneTeam_true() {
+        Team testTeam1 = new Team("Epicodus", "A group of Java Students");
+        Team testTeam2 = new Team("New Relic", "A group of senior developers");
+        assertEquals(2, Team.findById(testTeam2.getId()).getId());
     }
 }

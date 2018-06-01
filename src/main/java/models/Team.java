@@ -48,4 +48,8 @@ public class Team {
     public int getId() {
         return id;
     }
+
+    public static Team findById(int id){
+        return instances.get(id-1);
+    }
 }

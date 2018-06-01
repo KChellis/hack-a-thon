@@ -37,5 +37,13 @@ public class App {
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/teams/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int id = Integer.parseInt(request.params("id"));
+            Team currentTeam = Team.findById(id);
+            model.put("team", currentTeam);
+            return new ModelAndView (model, "team-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 }
