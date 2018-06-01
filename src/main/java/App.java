@@ -39,6 +39,7 @@ public class App {
             String name = request.queryParams("name");
             String description = request.queryParams("description");
             Team newTeam = new Team (name, description);
+            model.put("team", newTeam);
             model.put("add", "add");
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());

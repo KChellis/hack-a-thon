@@ -10,17 +10,18 @@
             {{/if}}
 
         {{else}}
-            Your team has been updated.
+            {{#if add}}
+                Your team has been created.
+            {{else}}
+                Your team has been updated.
+            {{/if}}
+
         {{/if}}
 
-        <a href="/teams/{{team.id}}">Return to team detail</a>
+        <a href="/teams/{{team.id}}">Go to team detail</a>
     {{else}}
-        {{#if add}}
-            Your team has been created.
-        {{else}}
-            Your team has been deleted.
-        {{/if}}
-        <a href="/teams">Go to team list</a>
+        Your team has been deleted.
+        <a href="/teams">Go to all teams</a>
     {{/if}}
 
 
