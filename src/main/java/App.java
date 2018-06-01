@@ -88,6 +88,10 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             int id = Integer.parseInt(request.params("id"));
             Team currentTeam = Team.findById(id);
+            for(Member member: currentTeam.getMembers()){
+                member.deleteMember();
+                Member.resetIds();
+            }
             currentTeam.deleteTeam();
             Team.resetIds();
             return new ModelAndView (model, "success.hbs");
