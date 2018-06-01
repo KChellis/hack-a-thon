@@ -3,6 +3,8 @@ package models;
 import org.junit.After;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class MemberTest {
@@ -52,5 +54,13 @@ public class MemberTest {
         Member testMember2 = new Member("Kayl Eubanks");
         Member.clearAllMembers();
         assertEquals(0, Member.getAll().size());
+    }
+
+    @Test
+    public void updateMemberName_changesMemberName() {
+        Member testMember = new Member("Kristen Chellis");
+        String formerName = testMember.getName();
+        testMember.updateMemberName("Kayl Eubanks");
+        assertNotEquals(formerName, testMember.getName());
     }
 }

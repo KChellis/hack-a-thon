@@ -6,7 +6,7 @@ import java.util.List;
 public class Team {
     private String name;
     private String description;
-    private List<String> members = new ArrayList<>();
+    private List<Member> members = new ArrayList<>();
     private static ArrayList<Team> instances = new ArrayList<>();
     private int id;
     private boolean full = false;
@@ -26,12 +26,13 @@ public class Team {
         return description;
     }
 
-    public List<String> getMembers() {
+    public List<Member> getMembers() {
         return members;
     }
 
     public void addMember(String name){
-        members.add(name);
+        Member newMember = new Member(name);
+        members.add(newMember);
     }
 
     public static ArrayList<Team> getAll() {

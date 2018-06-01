@@ -36,7 +36,7 @@ public class TeamTest {
     @Test
     public void newTeam_setsMembersToEmptyArray_Epicodus() {
         Team testTeam = new Team("Epicodus", "A group of Java Students");
-        List<String> members = testTeam.getMembers();
+        List<Member> members = testTeam.getMembers();
         assertEquals(0, members.size());
     }
 
@@ -77,7 +77,7 @@ public class TeamTest {
         Team testTeam = new Team("Epicodus", "A group of Java Students");
         String formerName = testTeam.getName();
         String formerDescription =testTeam.getDescription();
-        List<String> formerMembers = testTeam.getMembers();
+        List<Member> formerMembers = testTeam.getMembers();
 
 
         testTeam.updateTeamName("Epicodus alums");
@@ -110,7 +110,7 @@ public class TeamTest {
         Team testTeam = new Team("Epicodus", "A group of Java Students");
         String formerName = testTeam.getName();
         String formerDescription =testTeam.getDescription();
-        List<String> formerMembers = testTeam.getMembers();
+        List<Member> formerMembers = testTeam.getMembers();
 
 
         testTeam.updateTeamDescription("A group of JavaScript Students");

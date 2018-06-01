@@ -29,5 +29,9 @@ public class Member {
     public static void clearAllMembers(){
         instances.clear();
     }
+
+    public void updateMemberName(String newName){
+        name = newName;
+    }
 }
 
