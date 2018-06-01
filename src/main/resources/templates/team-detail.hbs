@@ -7,10 +7,15 @@
             <li>{{this}}</li>
         {{/each}}
     </ul>
-    <form action="/teams/{{team.id}}" method="post">
-        <input type="text" name="member" placeholder="Add member">
-        <button type="submit">Add</button>
-    </form>
+    {{#if team.full}}
+        <h3>This team is full!</h3>
+    {{else}}
+        <form action="/teams/{{team.id}}" method="post">
+            <input type="text" name="member" placeholder="Add member">
+            <button type="submit">Add</button>
+        </form>
+    {{/if}}
+
 
     <a href="/teams/{{team.id}}/update">Update Team Details</a>
 {{/partial}}

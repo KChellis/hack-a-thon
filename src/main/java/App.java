@@ -17,6 +17,11 @@ public class App {
             return new ModelAndView (model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/event", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView (model, "event.hbs");
+        }, new HandlebarsTemplateEngine());
+
         get("/teams", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("teams", Team.getAll());
@@ -51,6 +56,9 @@ public class App {
             String member = request.queryParams("member");
             Team currentTeam = Team.findById(id);
             currentTeam.addMember(member);
+            if(currentTeam.getMembers().size() == 6){
+                currentTeam.setFull(true);
+            }
             model.put("team", currentTeam);
             return new ModelAndView(model, "team-detail.hbs");
         }, new HandlebarsTemplateEngine());
