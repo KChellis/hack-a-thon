@@ -38,7 +38,7 @@ public class App {
             String name = request.queryParams("name");
             String description = request.queryParams("description");
             Team newTeam = new Team (name, description);
-            model.put("teams", Team.getAll());
+            model.put("add", "add");
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -80,6 +80,14 @@ public class App {
             currentTeam.updateTeamDescription(newDescription);
             currentTeam.updateTeamName(newName);
             model.put("team", currentTeam);
+            return new ModelAndView (model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/teams/:id/delete", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int id = Integer.parseInt(request.params("id"));
+            Team currentTeam = Team.findById(id);
+            currentTeam.deleteTeam();
             return new ModelAndView (model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 

@@ -5,9 +5,19 @@
         Your team has been saved.
         <a href="/teams/{{team.id}}">Return to team detail</a>
     {{else}}
-        Your team has been created.
+        {{#if add}}
+            Your team has been created.
+        {{else}}
+            Your team has been deleted.
+        {{/if}}
         <a href="/teams">Go to team list</a>
     {{/if}}
+
+
+
+
+
+
 
 {{/partial}}
 

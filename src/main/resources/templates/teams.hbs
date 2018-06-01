@@ -1,7 +1,7 @@
 {{#partial "content"}}
     {{#if teams}}
         {{#each teams}}
-            <p>{{ name }} <a href="/teams/{{id}}">See details</a></p>
+            <p>{{ name }}  <a href="/teams/{{id}}">See details</a>   <a href="/teams/{{id}}/delete">Delete Team</a></p>
         {{/each}}
 
     {{else}}

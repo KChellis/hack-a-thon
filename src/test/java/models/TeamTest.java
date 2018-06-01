@@ -45,7 +45,7 @@ public class TeamTest {
         Team testTeam = new Team("Epicodus", "A group of Java Students");
         testTeam.addMember("Kristen Chellis");
         assertEquals(1, testTeam.getMembers().size());
-        assertEquals("Kristen Chellis", testTeam.getMembers().get(0));
+        assertEquals("Kristen Chellis", testTeam.getMembers().get(0).getName());
     }
 
     @Test
@@ -132,4 +132,26 @@ public class TeamTest {
         testTeam.setFull(true);
         assertTrue(testTeam.isFull());
     }
+
+    @Test
+    public void deleteTeam_DeletesASpecificTeam() throws Exception {
+        Team testTeam1 = new Team("Epicodus", "A group of Java Students");
+        Team testTeam2 = new Team("New Relic", "A group of senior developers");
+        testTeam1.deleteTeam();
+        assertEquals(1, Team.getAll().size());
+        assertEquals(2, Team.getAll().get(0).getId());
+    }
+
+    @Test
+    public void resetIds_resetsIdsToBeOneMoreThanIndex_1() throws Exception {
+        Team testTeam1 = new Team("Epicodus", "A group of Java Students");
+        Team testTeam2 = new Team("New Relic", "A group of senior developers");
+        testTeam1.deleteTeam();
+        Team.resetIds();
+        assertEquals(1, Team.getAll().get(0).getId());
+
+    }
+
+
+    
 }

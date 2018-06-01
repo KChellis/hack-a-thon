@@ -66,4 +66,15 @@ public class Team {
     public void setFull(boolean full) {
         this.full = full;
     }
+
+    public void deleteTeam(){
+        instances.remove(id-1);
+    }
+
+    public static void resetIds(){
+        for(Team team: instances){
+            int index = instances.indexOf(team);
+            team.id = index + 1;
+        }
+    }
 }
