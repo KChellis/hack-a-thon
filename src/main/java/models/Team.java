@@ -20,4 +20,8 @@ public class Team {
     public String getDescription() {
         return description;
     }
+
+    public List<String> getMembers() {
+        return members;
+    }
 }

@@ -2,6 +2,8 @@ package models;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class TeamTest {
@@ -24,5 +26,10 @@ public class TeamTest {
         assertEquals("A group of Java Students", testTeam.getDescription());
     }
 
-
+    @Test
+    public void newTeam_setsMembersToEmptyArray_Epicodus() {
+        Team testTeam = new Team("Epicodus", "A group of Java Students");
+        List<String> members = testTeam.getMembers();
+        assertEquals(0, members.size());
+    }
 }
