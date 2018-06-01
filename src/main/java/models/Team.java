@@ -8,11 +8,13 @@ public class Team {
     private String description;
     private List<String> members = new ArrayList<>();
     private static ArrayList<Team> instances = new ArrayList<>();
+    private int id;
 
     public Team(String name, String description){
         this.name = name;
         this.description = description;
         instances.add(this);
+        id = instances.size();
     }
 
     public String getName() {
@@ -43,5 +45,7 @@ public class Team {
         name = newName;
     }
 
-
+    public int getId() {
+        return id;
+    }
 }

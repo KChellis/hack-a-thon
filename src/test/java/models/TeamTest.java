@@ -86,4 +86,10 @@ public class TeamTest {
         assertEquals(formerDescription, testTeam.getDescription());
         assertNotEquals(formerMembers, testTeam.getMembers());
     }
+
+    @Test
+    public void getId_teamsInstantiateWithAnID_1() throws Exception{
+        Team testTeam = new Team("Epicodus", "A group of Java Students");
+        assertEquals(1, testTeam.getId());
+    }
 }
