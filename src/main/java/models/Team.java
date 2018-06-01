@@ -9,6 +9,7 @@ public class Team {
     private List<String> members = new ArrayList<>();
     private static ArrayList<Team> instances = new ArrayList<>();
     private int id;
+    private boolean full = false;
 
     public Team(String name, String description){
         this.name = name;
@@ -55,5 +56,13 @@ public class Team {
 
     public void updateTeamDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isFull() {
+        return full;
+    }
+
+    public void setFull(boolean full) {
+        this.full = full;
     }
 }

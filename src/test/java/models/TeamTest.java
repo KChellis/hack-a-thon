@@ -120,4 +120,16 @@ public class TeamTest {
         assertNotEquals(formerDescription, testTeam.getDescription());
     }
 
+    @Test
+    public void newTeam_instantiatesWithFullFalse_false() {
+        Team testTeam = new Team("Epicodus", "A group of Java Students");
+        assertFalse(testTeam.isFull());
+    }
+
+    @Test
+    public void setFull_changesFull_true() {
+        Team testTeam = new Team("Epicodus", "A group of Java Students");
+        testTeam.setFull(true);
+        assertTrue(testTeam.isFull());
+    }
 }
