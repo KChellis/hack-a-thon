@@ -1,0 +1,56 @@
+package models;
+
+import org.junit.After;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class MemberTest {
+
+    @After
+    public void tearDown() throws Exception {
+        Member.clearAllMembers();
+    }
+
+    @Test
+    public void newMember_instantiatesCorrectly_true() {
+        Member testMember = new Member("Kristen Chellis");
+        assertTrue(testMember instanceof Member);
+    }
+
+    @Test
+    public void newMember_setsName_KristenChellis() {
+        Member testMember = new Member("Kristen Chellis");
+        assertEquals("Kristen Chellis", testMember.getName());
+    }
+
+    @Test
+    public void newMember_setsId_1() {
+        Member testMember = new Member("Kristen Chellis");
+        assertEquals(1, testMember.getId());
+    }
+
+    @Test
+    public void getAll_returnsAllMembersCorrectly_2() {
+        Member testMember1 = new Member("Kristen Chellis");
+        Member testMember2 = new Member("Kayl Eubanks");
+        assertEquals(2, Member.getAll().size());
+
+    }
+
+    @Test
+    public void getAll_containsAllMembers_true() {
+        Member testMember1 = new Member("Kristen Chellis");
+        Member testMember2 = new Member("Kayl Eubanks");
+        assertTrue(Member.getAll().contains(testMember1));
+        assertTrue(Member.getAll().contains(testMember2));
+    }
+
+    @Test
+    public void clearAllMembers_clearsInstances_0() {
+        Member testMember1 = new Member("Kristen Chellis");
+        Member testMember2 = new Member("Kayl Eubanks");
+        Member.clearAllMembers();
+        assertEquals(0, Member.getAll().size());
+    }
+}
