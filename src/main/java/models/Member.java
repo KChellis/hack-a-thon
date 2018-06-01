@@ -33,5 +33,9 @@ public class Member {
     public void updateMemberName(String newName){
         name = newName;
     }
+
+    public void deleteMember(){
+        instances.remove(id-1);
+    }
 }
 

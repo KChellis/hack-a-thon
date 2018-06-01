@@ -63,4 +63,13 @@ public class MemberTest {
         testMember.updateMemberName("Kayl Eubanks");
         assertNotEquals(formerName, testMember.getName());
     }
+
+    @Test
+    public void deleteMember_DeletesASpecificMember() throws Exception {
+        Member testMember1 = new Member("Kristen Chellis");
+        Member testMember2 = new Member("Kayl Eubanks");
+        testMember1.deleteMember();
+        assertEquals(1, Member.getAll().size());
+        assertEquals(2, Member.getAll().get(0).getId());
+    }
 }

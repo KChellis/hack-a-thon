@@ -88,6 +88,7 @@ public class App {
             int id = Integer.parseInt(request.params("id"));
             Team currentTeam = Team.findById(id);
             currentTeam.deleteTeam();
+            Team.resetIds();
             return new ModelAndView (model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
