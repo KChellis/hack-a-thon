@@ -34,4 +34,8 @@ public class Team {
     public static ArrayList<Team> getAll() {
         return instances;
     }
+
+    public static void clearAllTeams(){
+        instances.clear();
+    }
 }

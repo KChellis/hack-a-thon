@@ -9,6 +9,11 @@ import static org.junit.Assert.*;
 
 public class TeamTest {
 
+    @After
+    public void tearDown() {
+        Team.clearAllTeams();
+    }
+
 
     @Test
     public void newTeam_instantiatesCorrectly_true() {
@@ -57,5 +62,13 @@ public class TeamTest {
         Team testTeam2 = new Team("New Relic", "A group of senior developers");
         assertTrue(Team.getAll().contains(testTeam1));
         assertTrue(Team.getAll().contains(testTeam2));
+    }
+
+    @Test
+    public void clearAllTeams_clearsInstances_0() {
+        Team testTeam1 = new Team("Epicodus", "A group of Java Students");
+        Team testTeam2 = new Team("New Relic", "A group of senior developers");
+        Team.clearAllTeams();
+        assertEquals(0, Team.getAll().size());
     }
 }
