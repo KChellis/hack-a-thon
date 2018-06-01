@@ -11,4 +11,10 @@ public class TeamTest {
         Team testTeam = new Team("Epicodus", "A group of Java Students");
         assertTrue(testTeam instanceof Team);
     }
+
+    @Test
+    public void newTeam_setsName_Epicodus() {
+        Team testTeam = new Team("Epicodus", "A group of Java Students");
+        assertEquals("Epicodus", testTeam.getName());
+    }
 }
