@@ -104,4 +104,20 @@ public class TeamTest {
         Team testTeam2 = new Team("New Relic", "A group of senior developers");
         assertEquals(2, Team.findById(testTeam2.getId()).getId());
     }
+
+    @Test
+    public void updateTeamDescription_changesTeamDescription() {
+        Team testTeam = new Team("Epicodus", "A group of Java Students");
+        String formerName = testTeam.getName();
+        String formerDescription =testTeam.getDescription();
+        List<String> formerMembers = testTeam.getMembers();
+
+
+        testTeam.updateTeamDescription("A group of JavaScript Students");
+
+        assertEquals(formerMembers, testTeam.getMembers());
+        assertEquals(formerName, testTeam.getName());
+        assertNotEquals(formerDescription, testTeam.getDescription());
+    }
+
 }
