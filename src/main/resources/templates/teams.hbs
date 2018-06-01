@@ -1,8 +1,11 @@
 {{#partial "content"}}
+    <h2>Teams</h2>
     {{#if teams}}
-        {{#each teams}}
-            <p>{{ name }}  <a href="/teams/{{id}}">See details</a>   <a href="/teams/{{id}}/delete">Delete Team</a></p>
-        {{/each}}
+        <ul>
+            {{#each teams}}
+                <p><strong>{{ name }}</strong>  <a href="/teams/{{id}}">Details</a>   <a href="/teams/{{id}}/delete">Delete</a></p>
+            {{/each}}
+        </ul>
 
     {{else}}
         <h3>Sorry, there are no teams to display</h3>

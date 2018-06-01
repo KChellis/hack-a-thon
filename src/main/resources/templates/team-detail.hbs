@@ -1,10 +1,10 @@
 {{#partial "content"}}
-    <h1>{{team.name}}</h1>
-    <h4>{{team.description}}</h4>
-    <h3>Members:</h3>
+    <h2>{{team.name}}</h2>
+    <h5>{{team.description}}</h5>
+    <h4>Members:</h4>
     <ul>
         {{#each team.members}}
-            <li>{{name}} <a href="/teams/{{team.id}}/{{id}}/update">Update Member</a>   <a href="/teams/{{team.id}}/{{id}}/delete">Delete Member</a></li>
+            <li><strong>{{name}}</strong> <a href="/teams/{{team.id}}/{{id}}/update">Update</a>   <a href="/teams/{{team.id}}/{{id}}/delete">Delete</a></li>
         {{/each}}
     </ul>
     {{#if team.full}}
