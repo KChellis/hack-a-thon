@@ -72,4 +72,26 @@ public class MemberTest {
         assertEquals(1, Member.getAll().size());
         assertEquals(2, Member.getAll().get(0).getId());
     }
+
+    @Test
+    public void getById_returnsCorrectMember_true() {
+        Member testMember = new Member("Kristen Chellis");
+        assertEquals(1, Member.findById(testMember.getId()).getId());
+    }
+    @Test
+    public void getById_returnsCorrectMemberWhenMoreThanOneMember_true() {
+        Member testMember1 = new Member("Kristen Chellis");
+        Member testMember2 = new Member("Kayl Eubanks");
+        assertEquals(2, Member.findById(testMember2.getId()).getId());
+    }
+
+    @Test
+    public void resetIds_resetsIdsToBeOneMoreThanIndex_1() throws Exception {
+        Member testMember1 = new Member("Kristen Chellis");
+        Member testMember2 = new Member("Kayl Eubanks");
+        testMember1.deleteMember();
+        Member.resetIds();
+        assertEquals(1, Member.getAll().get(0).getId());
+
+    }
 }

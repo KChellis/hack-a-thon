@@ -2,7 +2,12 @@
 
     <h1>Success!</h1>
     {{#if team}}
-        Your team has been saved.
+        {{#if delete}}
+            Your member has been deleted
+        {{else}}
+            Your team has been updated.
+        {{/if}}
+
         <a href="/teams/{{team.id}}">Return to team detail</a>
     {{else}}
         {{#if add}}

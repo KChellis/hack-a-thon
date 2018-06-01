@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
+import models.Member;
 import models.Team;
 import spark.ModelAndView;
 import spark.staticfiles.StaticFilesFolder;
@@ -89,6 +90,21 @@ public class App {
             Team currentTeam = Team.findById(id);
             currentTeam.deleteTeam();
             Team.resetIds();
+            return new ModelAndView (model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/teams/:id/:memberId", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int teamId = Integer.parseInt(request.params("id"));
+            int memberId = Integer.parseInt(request.params("memberId"));
+            Team currentTeam = Team.findById(teamId);
+            Member currentMember = Member.findById(memberId);
+            int index = currentTeam.getMembers().indexOf(currentMember);
+            currentTeam.getMembers().remove(index);
+            currentMember.deleteMember();
+            Member.resetIds();
+            model.put("team", currentTeam);
+            model.put("delete", "delete");
             return new ModelAndView (model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 

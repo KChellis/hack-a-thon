@@ -37,5 +37,15 @@ public class Member {
     public void deleteMember(){
         instances.remove(id-1);
     }
+
+    public static Member findById(int id){
+        return instances.get(id-1);
+    }
+    public static void resetIds(){
+        for(Member member: instances){
+            int index = instances.indexOf(member);
+            member.id = index + 1;
+        }
+    }
 }
 
