@@ -44,6 +44,15 @@ public class App {
             model.put("team", currentTeam);
             return new ModelAndView (model, "team-detail.hbs");
         }, new HandlebarsTemplateEngine());
+        post("/teams/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int id = Integer.parseInt(request.params("id"));
+            String member = request.queryParams("member");
+            Team currentTeam = Team.findById(id);
+            currentTeam.addMember(member);
+            model.put("team", currentTeam);
+            return new ModelAndView(model, "team-detail.hbs");
+        }, new HandlebarsTemplateEngine());
 
     }
 }
