@@ -93,7 +93,7 @@ public class App {
             return new ModelAndView (model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/teams/:id/:memberId", (request, response) -> {
+        get("/teams/:id/:memberId/delete", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int teamId = Integer.parseInt(request.params("id"));
             int memberId = Integer.parseInt(request.params("memberId"));
@@ -104,7 +104,32 @@ public class App {
             currentMember.deleteMember();
             Member.resetIds();
             model.put("team", currentTeam);
+            model.put("member", currentMember);
             model.put("delete", "delete");
+            return new ModelAndView (model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/teams/:id/:memberId/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int teamId = Integer.parseInt(request.params("id"));
+            int memberId = Integer.parseInt(request.params("memberId"));
+            Team currentTeam = Team.findById(teamId);
+            Member currentMember = Member.findById(memberId);
+            model.put("team", currentTeam);
+            model.put("member", currentMember);
+            return new ModelAndView (model, "addteam-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/teams/:id/:memberId/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int teamId = Integer.parseInt(request.params("id"));
+            int memberId = Integer.parseInt(request.params("memberId"));
+            String newName = request.queryParams("name");
+            Team currentTeam = Team.findById(teamId);
+            Member currentMember = Member.findById(memberId);
+            currentMember.updateMemberName(newName);
+            model.put("team", currentTeam);
+            model.put("member", currentMember);
             return new ModelAndView (model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 

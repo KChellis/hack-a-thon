@@ -4,7 +4,7 @@
     <h3>Members:</h3>
     <ul>
         {{#each team.members}}
-            <li>{{name}} <a href="/teams/{{team.id}}/{{id}}">Delete Member</a></li>
+            <li>{{name}} <a href="/teams/{{team.id}}/{{id}}/update">Update Member</a>   <a href="/teams/{{team.id}}/{{id}}/delete">Delete Member</a></li>
         {{/each}}
     </ul>
     {{#if team.full}}

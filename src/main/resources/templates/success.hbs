@@ -2,8 +2,13 @@
 
     <h1>Success!</h1>
     {{#if team}}
-        {{#if delete}}
-            Your member has been deleted
+        {{#if member}}
+            {{#if delete}}
+                Your member has been deleted
+            {{else}}
+                Your member has been updated
+            {{/if}}
+
         {{else}}
             Your team has been updated.
         {{/if}}

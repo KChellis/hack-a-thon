@@ -1,14 +1,24 @@
 {{#partial "content"}}
     {{#if team}}
-        <h2>Update team:</h2>
+        {{#if member}}
+            <h2>Update Member:</h2>
 
-        <form action="/teams/{{team.id}}/update" method="post">
+            <form action="/teams/{{team.id}}/{{member.id}}/update" method="post">
 
-            <label for="name">Edit Team Name:</label>
-            <input type="text" name="name" id="name" value="{{team.name}}"><br>
+                <label for="name">Edit Name:</label>
+                <input type="text" name="name" id="name" value="{{member.name}}"><br>
+        {{else}}
+            <h2>Update team:</h2>
 
-            <label for="description">Edit Team Description:</label>
-            <input type="text" name="description" id="description" value="{{team.description}}"><br>
+            <form action="/teams/{{team.id}}/update" method="post">
+
+                <label for="name">Edit Team Name:</label>
+                <input type="text" name="name" id="name" value="{{team.name}}"><br>
+
+                <label for="description">Edit Team Description:</label>
+                <input type="text" name="description" id="description" value="{{team.description}}"><br>
+        {{/if}}
+
     {{else}}
         <h2>Add new team:</h2>
 
@@ -22,7 +32,7 @@
     {{/if}}
 
 
-        <button type="submit" class="btn btn-info">Save Team</button>
+        <button type="submit" class="btn btn-info">Save</button>
     </form>
 
 {{/partial}}
