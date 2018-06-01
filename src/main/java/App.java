@@ -105,6 +105,7 @@ public class App {
             Member currentMember = Member.findById(memberId);
             int index = currentTeam.getMembers().indexOf(currentMember);
             currentTeam.getMembers().remove(index);
+            currentTeam.setFull(false);
             currentMember.deleteMember();
             Member.resetIds();
             model.put("team", currentTeam);
