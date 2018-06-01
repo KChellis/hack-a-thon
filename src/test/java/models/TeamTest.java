@@ -71,4 +71,19 @@ public class TeamTest {
         Team.clearAllTeams();
         assertEquals(0, Team.getAll().size());
     }
+
+    @Test
+    public void updateTeamName_changesTeamName() {
+        Team testTeam = new Team("Epicodus", "A group of Java Students");
+        String formerName = testTeam.getName();
+        String formerDescription =testTeam.getDescription();
+        List<String> formerMembers = testTeam.getMembers();
+
+
+        testTeam.updateTeamName("Epicodus alums");
+
+        assertEquals(formerName, testTeam.getName());
+        assertEquals(formerDescription, testTeam.getDescription());
+        assertNotEquals(formerMembers, testTeam.getMembers());
+    }
 }

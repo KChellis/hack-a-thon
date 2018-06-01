@@ -38,4 +38,10 @@ public class Team {
     public static void clearAllTeams(){
         instances.clear();
     }
+
+    public void updateTeamName(String newName){
+        name = newName;
+    }
+
+
 }
