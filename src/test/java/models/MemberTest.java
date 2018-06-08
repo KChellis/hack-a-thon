@@ -9,11 +9,6 @@ import static org.junit.Assert.*;
 
 public class MemberTest {
 
-    @After
-    public void tearDown() throws Exception {
-        Member.clearAllMembers();
-    }
-
     @Test
     public void newMember_instantiatesCorrectly_true() {
         Member testMember = new Member("Kristen Chellis");
@@ -27,71 +22,16 @@ public class MemberTest {
     }
 
     @Test
-    public void newMember_setsId_1() {
+    public void setId_setsId_1() {
         Member testMember = new Member("Kristen Chellis");
+        testMember.setId(1);
         assertEquals(1, testMember.getId());
     }
 
     @Test
-    public void getAll_returnsAllMembersCorrectly_2() {
-        Member testMember1 = new Member("Kristen Chellis");
-        Member testMember2 = new Member("Kayl Eubanks");
-        assertEquals(2, Member.getAll().size());
-
-    }
-
-    @Test
-    public void getAll_containsAllMembers_true() {
-        Member testMember1 = new Member("Kristen Chellis");
-        Member testMember2 = new Member("Kayl Eubanks");
-        assertTrue(Member.getAll().contains(testMember1));
-        assertTrue(Member.getAll().contains(testMember2));
-    }
-
-    @Test
-    public void clearAllMembers_clearsInstances_0() {
-        Member testMember1 = new Member("Kristen Chellis");
-        Member testMember2 = new Member("Kayl Eubanks");
-        Member.clearAllMembers();
-        assertEquals(0, Member.getAll().size());
-    }
-
-    @Test
-    public void updateMemberName_changesMemberName() {
+    public void setTeamId_setsTeamId() {
         Member testMember = new Member("Kristen Chellis");
-        String formerName = testMember.getName();
-        testMember.updateMemberName("Kayl Eubanks");
-        assertNotEquals(formerName, testMember.getName());
-    }
-
-    @Test
-    public void deleteMember_DeletesASpecificMember() throws Exception {
-        Member testMember1 = new Member("Kristen Chellis");
-        Member testMember2 = new Member("Kayl Eubanks");
-        testMember1.deleteMember();
-        assertEquals(1, Member.getAll().size());
-        assertEquals(2, Member.getAll().get(0).getId());
-    }
-
-    @Test
-    public void getById_returnsCorrectMember_true() {
-        Member testMember = new Member("Kristen Chellis");
-        assertEquals(1, Member.findById(testMember.getId()).getId());
-    }
-    @Test
-    public void getById_returnsCorrectMemberWhenMoreThanOneMember_true() {
-        Member testMember1 = new Member("Kristen Chellis");
-        Member testMember2 = new Member("Kayl Eubanks");
-        assertEquals(2, Member.findById(testMember2.getId()).getId());
-    }
-
-    @Test
-    public void resetIds_resetsIdsToBeOneMoreThanIndex_1() throws Exception {
-        Member testMember1 = new Member("Kristen Chellis");
-        Member testMember2 = new Member("Kayl Eubanks");
-        testMember1.deleteMember();
-        Member.resetIds();
-        assertEquals(1, Member.getAll().get(0).getId());
-
+        testMember.setTeamId(1);
+        assertEquals(1, testMember.getTeamId());
     }
 }

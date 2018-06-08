@@ -5,13 +5,11 @@ import java.util.List;
 
 public class Member {
     private String name;
-    private static List<Member> instances = new ArrayList<>();
+    private int teamId;
     private int id;
 
     public Member(String name) {
         this.name = name;
-        instances.add(this);
-        id = instances.size();
     }
 
     public String getName() {
@@ -22,30 +20,16 @@ public class Member {
         return id;
     }
 
-    public static List<Member> getAll(){
-        return instances;
+    public int getTeamId() {
+        return teamId;
     }
 
-    public static void clearAllMembers(){
-        instances.clear();
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void updateMemberName(String newName){
-        name = newName;
-    }
-
-    public void deleteMember(){
-        instances.remove(id-1);
-    }
-
-    public static Member findById(int id){
-        return instances.get(id-1);
-    }
-    public static void resetIds(){
-        for(Member member: instances){
-            int index = instances.indexOf(member);
-            member.id = index + 1;
-        }
+    public void setTeamId(int teamId) {
+        this.teamId = teamId;
     }
 }
 
