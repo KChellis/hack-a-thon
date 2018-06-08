@@ -87,7 +87,18 @@ public class Sql2oMemberDaoTest {
         assertEquals(0, memberDao.getAll().size());
     }
 
+    @Test
+    public void findByTeam_returnsMembersByTeam() {
+        Member testMember = setupMember();
+        Member testMember2 = setupMember();
+        memberDao.add(testMember);
+        memberDao.add(testMember2);
+        Member testMember3 = new Member("sarah", "email", "phone", 2);
+        memberDao.add(testMember3);
+        assertEquals(2, memberDao.findByTeam(1).size());
+    }
+
     public Member setupMember(){
-        return  new Member("Kristen Chellis", "peanutster@gmail.com", "503-720-4196");
+        return  new Member("Kristen Chellis", "peanutster@gmail.com", "503-720-4196", 1);
     }
 }

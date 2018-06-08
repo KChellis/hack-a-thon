@@ -48,6 +48,16 @@ public class Sql2oMemberDao implements MemberDao{
     }
 
     @Override
+    public List<Member> findByTeam(int teamId) {
+        String sql = "SELECT * FROM members WHERE teamId = :teamId";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("teamId", teamId)
+                    .executeAndFetch(Member.class);
+        }
+    }
+
+    @Override
     public void update(int id, String name, String email, String phone, int teamId) {
         String sql = "UPDATE members SET (name, email, phone, teamId) = (:name, :email, :phone, :teamId) WHERE id = :id";
         try(Connection con = sql2o.open()){

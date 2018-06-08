@@ -10,10 +10,11 @@ public class Member {
     private int teamId;
     private int id;
 
-    public Member(String name, String email, String phone) {
+    public Member(String name, String email, String phone, int teamId) {
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.teamId= teamId;
     }
 
     public String getName() {

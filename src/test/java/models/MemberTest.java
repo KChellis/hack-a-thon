@@ -34,20 +34,19 @@ public class MemberTest {
     }
 
     @Test
+    public void newMember_setsTeamId() {
+        Member testMember = setupMember();
+        assertEquals(1, testMember.getTeamId());
+    }
+
+    @Test
     public void setId_setsId_1() {
         Member testMember = setupMember();
         testMember.setId(1);
         assertEquals(1, testMember.getId());
     }
 
-    @Test
-    public void setTeamId_setsTeamId() {
-        Member testMember = setupMember();
-        testMember.setTeamId(1);
-        assertEquals(1, testMember.getTeamId());
-    }
-
     public Member setupMember(){
-        return  new Member("Kristen Chellis", "peanutster@gmail.com", "503-720-4196");
+        return  new Member("Kristen Chellis", "peanutster@gmail.com", "503-720-4196", 1);
     }
 }

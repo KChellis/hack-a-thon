@@ -12,6 +12,7 @@ public interface MemberDao {
 
     //READ
     Member findById(int id);
+    List<Member> findByTeam(int teamId);
 
     //UPDATE
     void update(int id, String name, String email, String phone, int teamId);
