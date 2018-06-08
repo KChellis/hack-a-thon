@@ -55,6 +55,34 @@ public class Sql2oTeamDaoTest {
         assertEquals(testTeam.getName(), foundTeam.getName());
     }
 
+    @Test
+    public void update_changesNameAndDescription() {
+        Team testTeam = setupTeam();
+        teamDao.add(testTeam);
+        teamDao.update(1, "new team name", "new description");
+        assertNotEquals(testTeam.getName(), teamDao.findById(1).getName());
+        assertNotEquals(testTeam.getDescription(), teamDao.findById(1).getDescription());
+    }
+
+    @Test
+    public void updateIsFull_updatesIsFull() {
+        Team testTeam = setupTeam();
+        teamDao.add(testTeam);
+        teamDao.updateIsFull(1, true);
+        assertTrue(teamDao.findById(1).isIsFull());
+    }
+
+    @Test
+    public void deleteById_deletesTeam() {
+        Team testTeam = setupTeam();
+        Team testTeam2 = setupTeam();
+        teamDao.add(testTeam);
+        teamDao.add(testTeam2);
+        teamDao.deleteById(1);
+        assertEquals(1, teamDao.getAll().size());
+        assertEquals(2, teamDao.getAll().get(0).getId());
+    }
+
     public Team setupTeam(){
         return new Team("Awesome Team", "Epicodus students");
     }

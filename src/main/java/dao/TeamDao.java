@@ -17,6 +17,7 @@ public interface TeamDao {
 
     //UPDATE
     void update(int id, String name, String description);
+    void updateIsFull(int id, boolean isFull);
 
     //DELETE
     void deleteById(int id);
