@@ -83,6 +83,16 @@ public class Sql2oTeamDaoTest {
         assertEquals(2, teamDao.getAll().get(0).getId());
     }
 
+    @Test
+    public void clearAllTeams_deletesAllTeams() {
+        Team testTeam = setupTeam();
+        Team testTeam2 = setupTeam();
+        teamDao.add(testTeam);
+        teamDao.add(testTeam2);
+        teamDao.clearAllTeams();
+        assertEquals(0, teamDao.getAll().size());
+    }
+
     public Team setupTeam(){
         return new Team("Awesome Team", "Epicodus students");
     }
