@@ -5,15 +5,27 @@ import java.util.List;
 
 public class Member {
     private String name;
+    private String email;
+    private String phone;
     private int teamId;
     private int id;
 
-    public Member(String name) {
+    public Member(String name, String email, String phone) {
         this.name = name;
+        this.email = email;
+        this.phone = phone;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public int getId() {
