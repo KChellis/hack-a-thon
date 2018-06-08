@@ -51,6 +51,13 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
+        get("/teams/delete", (request, response) -> {
+            memberDao.clearAllMembers();
+            teamDao.clearAllTeams();
+            response.redirect("/teams");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
         get("/teams/:teamId", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int teamId = Integer.parseInt(request.params("teamId"));
