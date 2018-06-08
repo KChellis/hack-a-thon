@@ -2,12 +2,18 @@
     <h2>{{team.name}}</h2>
     <h5>{{team.description}}</h5>
     <h4>Members:</h4>
-    <ul>
-        {{#each team.members}}
-            <li><strong>{{name}}</strong> <a href="/teams/{{team.id}}/members/{{id}}">Details</a> <a href="/teams/{{team.id}}/members/{{id}}/update">Update</a>   <a href="/teams/{{team.id}}/members/{{id}}/delete">Delete</a></li>
-        {{/each}}
-    </ul>
-    {{#if team.full}}
+    {{#if members}}
+        <ul>
+            {{#each members}}
+                <li><strong>{{name}}</strong> <a href="/teams/{{teamId}}/members/{{id}}">Details</a> <a href="/teams/{{teamId}}/members/{{id}}/update">Update</a>   <a href="/teams/{{teamId}}/members/{{id}}/delete">Delete</a></li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <h5>There are no members in this team</h5>
+    {{/if}}
+
+    <hr>
+    {{#if full}}
         <h3>This team is full!</h3>
     {{else}}
         <h4>Add member:</h4>
@@ -19,9 +25,10 @@
         </form>
     {{/if}}
 
-
+    <hr>
     <a href="/teams/{{team.id}}/update">Update Team Details</a><br>
     <a href="/teams/{{team.id}}/delete">Delete Team</a>
+    <hr>
 {{/partial}}
 
 {{> layout.hbs}}

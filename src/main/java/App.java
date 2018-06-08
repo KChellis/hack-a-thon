@@ -57,6 +57,7 @@ public class App {
             Team currentTeam = teamDao.findById(teamId);
             model.put("team", currentTeam);
             List<Member> members = memberDao.findByTeam(teamId);
+            System.out.println(currentTeam.isIsFull());
             model.put("members", members);
             model.put("full", currentTeam.isIsFull());
             return new ModelAndView (model, "team-detail.hbs");
@@ -68,6 +69,7 @@ public class App {
             String email = request.queryParams("email");
             String phone = request.queryParams("phone");
             Member newMember = new Member(name, email, phone, teamId);
+            memberDao.add(newMember);
             if(memberDao.findByTeam(teamId).size() == 6){
                 teamDao.updateIsFull(teamId, true);
             }
@@ -113,7 +115,7 @@ public class App {
             return new ModelAndView (model, "member-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/teams/teamId/members/:memberId/delete", (request, response) -> {
+        get("/teams/:teamId/members/:memberId/delete", (request, response) -> {
             int teamId = Integer.parseInt(request.params("teamId"));
             int memberId = Integer.parseInt(request.params("memberId"));
             memberDao.deleteById(memberId);

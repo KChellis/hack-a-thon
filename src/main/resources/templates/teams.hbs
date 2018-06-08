@@ -3,14 +3,16 @@
     {{#if teams}}
         <ul>
             {{#each teams}}
-                <p><strong>{{ name }}</strong>  <a href="/teams/{{id}}">Details</a>   <a href="/teams/{{id}}/delete">Delete</a></p>
+                <p><strong>{{ name }}</strong> {{#if full}}Full{{/if}}  <a href="/teams/{{id}}">Details</a>   <a href="/teams/{{id}}/delete">Delete</a></p>
             {{/each}}
         </ul>
 
     {{else}}
         <h3>Sorry, there are no teams to display</h3>
     {{/if}}
+    <hr>
     <a href="/teams/add">Add Team</a>
+    <hr>
 
 {{/partial}}
 
