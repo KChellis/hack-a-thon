@@ -16,12 +16,16 @@ public class Sql2oTeamDao implements TeamDao{
 
     @Override
     public List<Team> getAll() {
-        return null;
+        String sql = "SELECT * FROM teams";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .executeAndFetch(Team.class);
+        }
     }
 
     @Override
     public void add(Team team) {
-        String sql = "INSERT INTO teams (name, description) VALUES (:name, :description)";
+        String sql = "INSERT INTO teams (name, description, isFull) VALUES (:name, :description, :isFull)";
         try(Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql, true)
                     .bind(team)
@@ -35,11 +39,16 @@ public class Sql2oTeamDao implements TeamDao{
 
     @Override
     public Team findById(int id) {
-        return null;
+        String sql = "SELECT * FROM teams WHERE id = :id";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Team.class);
+        }
     }
 
     @Override
-    public void update(int id, String name) {
+    public void update(int id, String name, String description) {
 
     }
 

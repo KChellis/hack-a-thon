@@ -35,6 +35,24 @@ public class Sql2oTeamDaoTest {
 
     @Test
     public void getAll_returnsEmptyListIfNoTeams() {
+        assertEquals(0, teamDao.getAll().size());
+    }
+
+    @Test
+    public void getAll_returnsAllTeams() {
+        Team testTeam = setupTeam();
+        Team testTeam2 = setupTeam();
+        teamDao.add(testTeam);
+        teamDao.add(testTeam2);
+        assertEquals(2, teamDao.getAll().size());
+    }
+
+    @Test
+    public void findById_returnsCorrectTeam() {
+        Team testTeam = setupTeam();
+        teamDao.add(testTeam);
+        Team foundTeam = teamDao.findById(1);
+        assertEquals(testTeam.getName(), foundTeam.getName());
     }
 
     public Team setupTeam(){

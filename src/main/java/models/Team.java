@@ -6,7 +6,7 @@ import java.util.List;
 public class Team {
     private String name;
     private String description;
-    private boolean full = false;
+    private boolean isFull = false;
     private int id;
 
     public Team(String name, String description){
@@ -26,8 +26,8 @@ public class Team {
         return id;
     }
 
-    public boolean isFull() {
-        return full;
+    public boolean isIsFull() {
+        return isFull;
     }
 
     public void setId(int id) {

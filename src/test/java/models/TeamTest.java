@@ -38,7 +38,7 @@ public class TeamTest {
     @Test
     public void newTeam_instantiatesWithFullFalse_false() {
         Team testTeam = new Team("Epicodus", "A group of Java Students");
-        assertFalse(testTeam.isFull());
+        assertFalse(testTeam.isIsFull());
     }
     
 }
