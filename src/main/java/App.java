@@ -63,16 +63,14 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         post("/teams/:teamId/members/add", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
             int teamId = Integer.parseInt(request.params("teamId"));
             String name = request.queryParams("name");
             String email = request.queryParams("email");
             String phone = request.queryParams("phone");
-            Team currentTeam = teamDao.findById(teamId);
+            Member newMember = new Member(name, email, phone, teamId);
             if(memberDao.findByTeam(teamId).size() == 6){
                 teamDao.updateIsFull(teamId, true);
             }
-            model.put("team", currentTeam);
             response.redirect("/teams/" + teamId);
             return null;
         }, new HandlebarsTemplateEngine());
@@ -85,8 +83,7 @@ public class App {
             return new ModelAndView (model, "addteam-form.hbs");
         }, new HandlebarsTemplateEngine());
 
-        post("/teams/:id/update", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
+        post("/teams/:teamId/update", (request, response) -> {
             String newName = request.queryParams("name");
             String newDescription = request.queryParams("description");
             int teamId = Integer.parseInt(request.params("teamId"));
@@ -96,7 +93,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         get("/teams/:teamId/delete", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
             int teamId = Integer.parseInt(request.params("teamId"));
             for(Member member: memberDao.findByTeam(teamId)){
                 memberDao.deleteById(member.getId());
@@ -118,7 +114,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         get("/teams/teamId/members/:memberId/delete", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
             int teamId = Integer.parseInt(request.params("teamId"));
             int memberId = Integer.parseInt(request.params("memberId"));
             memberDao.deleteById(memberId);
@@ -139,7 +134,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         post("/teams/:teamId/members/:memberId/update", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
             int teamId = Integer.parseInt(request.params("teamId"));
             int memberId = Integer.parseInt(request.params("memberId"));
             String newName = request.queryParams("name");

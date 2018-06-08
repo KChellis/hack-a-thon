@@ -3,10 +3,14 @@
         {{#if member}}
             <h2>Update Member:</h2>
 
-            <form action="/teams/{{team.id}}/{{member.id}}/update" method="post">
+            <form action="/teams/{{team.id}}/members/{{member.id}}/update" method="post">
 
                 <label for="name">Edit Name:</label>
                 <input type="text" name="name" id="name" value="{{member.name}}"><br>
+                <label for="email">Edit Email:</label>
+                <input type="text" name="email" id="email" value="{{member.email}}"><br>
+                <label for="phone">Edit Phone:</label>
+                <input type="text" name="phone" id="phone" value="{{member.phone}}"><br>
         {{else}}
             <h2>Update team:</h2>
 

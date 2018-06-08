@@ -4,14 +4,17 @@
     <h4>Members:</h4>
     <ul>
         {{#each team.members}}
-            <li><strong>{{name}}</strong> <a href="/teams/{{team.id}}/{{id}}/update">Update</a>   <a href="/teams/{{team.id}}/{{id}}/delete">Delete</a></li>
+            <li><strong>{{name}}</strong> <a href="/teams/{{team.id}}/members/{{id}}">Details</a> <a href="/teams/{{team.id}}/members/{{id}}/update">Update</a>   <a href="/teams/{{team.id}}/members/{{id}}/delete">Delete</a></li>
         {{/each}}
     </ul>
     {{#if team.full}}
         <h3>This team is full!</h3>
     {{else}}
-        <form action="/teams/{{team.id}}" method="post">
-            <input type="text" name="member" placeholder="Add member">
+        <h4>Add member:</h4>
+        <form action="/teams/{{team.id}}/members/add" method="post">
+            <input type="text" name="name" placeholder="Enter member name"><br>
+            <input type="text" name="email" placeholder="Enter member email"><br>
+            <input type="text" name="phone" placeholder="Enter member phone"><br>
             <button type="submit">Add</button>
         </form>
     {{/if}}
